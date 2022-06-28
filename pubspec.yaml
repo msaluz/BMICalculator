@@ -1,4 +1,4 @@
-name: BmiCalculator
+name: bmi_calculator
 description: A BMI Calculator
 
 # The following line prevents the package from being accidentally published to
