@@ -7,15 +7,9 @@ class BmiCubit extends Cubit<BmiState> {
   BmiCubit() : super(BmiLoading());
   final BmiRepository repo = BmiRepository();
 
-  Future<void> bmiCalculate(double height, double weight) async {
-    final result = await repo.getBmiScore(weight, height);
-    emit(BmiCalculated(bmiScore: result));
+  Future<void> bmiResult(int height, int weight) async {
+    final score = await repo.getBmiScore(weight, height);
+    final rating = await repo.getBmiRating(weight, height);
+    emit(BmiResult(height.toString(), weight.toString(), score, rating));
   }
-
-  Future<void> bmiGetRating(double height, double weight) async {
-    final result = await repo.getBmiRating(weight, height);
-    emit(BmiRating(bmiRating: result));
-  }
-
-  void setBmiValues(String height, String weight) => emit(BmiValues(height: height, weight: weight));
 }

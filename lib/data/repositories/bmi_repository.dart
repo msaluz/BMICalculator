@@ -1,12 +1,12 @@
 import '../models/bmi_model.dart';
 
 class BmiRepository {
-  Future<String> getBmiScore(double weight, double height) async {
+  Future<String> getBmiScore(int weight, int height) async {
     BMI bmi = BMI(height: height, weight: weight);
-    return bmi.compute().toString();
+    return bmi.compute().toStringAsFixed(2);
   }
 
-  Future<String> getBmiRating(double weight, double height) async {
+  Future<String> getBmiRating(int weight, int height) async {
     BMI bmi = BMI(height: height, weight: weight);
     return bmi.computeBmiRating();
   }

@@ -1,5 +1,4 @@
 import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
-import 'package:bmi_calculator/presentation/screens/bmi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       backgroundColor: const Color(0x2f6009cb),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 80, 20, 20),
+        padding: const EdgeInsets.fromLTRB(20, 75, 20, 20),
         child: Column(
           children: [
             const Text(
@@ -66,8 +65,14 @@ class _HomeScreenState extends State<HomeScreen>
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                [context.read<UserCubit>().sendUsername(controller.text),
-                Navigator.of(context).pushNamed(Routes.bmiScreen)];
+                if (controller.text != "") {
+                  [
+                    context.read<UserCubit>().sendUsername(controller.text),
+                    Navigator.of(context).pushNamed(Routes.bmiScreen)
+                  ];
+                } else {
+                  //TODO: Show error message
+                }
                 //Navigator.push(context, MaterialPageRoute(builder: (context) => const BmiScreen(text: )))
               },
               style: ElevatedButton.styleFrom(

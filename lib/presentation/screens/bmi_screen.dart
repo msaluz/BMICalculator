@@ -223,9 +223,7 @@ class _BmiScreenState extends State<BmiScreen>
                   onPressed: () {
                     final cubit = BlocProvider.of<BmiCubit>(context);
                     [
-                      cubit.setBmiValues(height.toString(), weight.toString()),
-                      cubit.bmiCalculate(height, weight),
-                      cubit.bmiGetRating(height, weight),
+                      cubit.bmiResult(height.toInt(), weight.toInt()),
                       Navigator.of(context).pushNamed(Routes.resultScreen)
                     ];
                   },

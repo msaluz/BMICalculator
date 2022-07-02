@@ -4,21 +4,11 @@ abstract class BmiState {}
 
 class BmiLoading extends BmiState {}
 
-class BmiCalculated extends BmiState {
-  final String bmiScore;
-
-  BmiCalculated({required this.bmiScore});
-}
-
-class BmiValues extends BmiState {
+class BmiResult extends BmiState {
   final String height;
   final String weight;
-
-  BmiValues({required this.height, required this.weight});
-}
-
-class BmiRating extends BmiState {
+  final String bmiScore;
   final String bmiRating;
 
-  BmiRating({required this.bmiRating});
+  BmiResult(this.height, this.weight, this.bmiScore, this.bmiRating);
 }

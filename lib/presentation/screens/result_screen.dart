@@ -63,7 +63,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                 BlocBuilder<BmiCubit, BmiState>(
                                   builder: (context, state) {
                                     final heightData =
-                                        (state as BmiValues).height;
+                                        (state as BmiResult).height;
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -83,7 +83,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                 BlocBuilder<BmiCubit, BmiState>(
                                   builder: (context, state) {
                                     final weightData =
-                                        (state as BmiValues).weight;
+                                        (state as BmiResult).weight;
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -125,7 +125,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                 BlocBuilder<BmiCubit, BmiState>(
                                   builder: (context, state) {
                                     final scoreData =
-                                        (state as BmiCalculated).bmiScore;
+                                        (state as BmiResult).bmiScore;
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -145,7 +145,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                 BlocBuilder<BmiCubit, BmiState>(
                                   builder: (context, state) {
                                     final ratingData =
-                                        (state as BmiRating).bmiRating;
+                                        (state as BmiResult).bmiRating;
                                     return Text(
                                       "BMI Rating: $ratingData",
                                       textAlign: TextAlign.center,

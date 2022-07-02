@@ -1,6 +1,6 @@
 class BMI {
-  final double height;
-  final double weight;
+  final int height;
+  final int weight;
   static double? low;
   static double? high;
   static final List<String> descriptions = [
