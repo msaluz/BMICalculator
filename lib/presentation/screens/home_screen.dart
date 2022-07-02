@@ -1,5 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
+import 'package:bmi_calculator/presentation/screens/bmi_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../router/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 Color textColor = Colors.white;
+TextEditingController controller = TextEditingController();
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
@@ -22,14 +27,14 @@ class _HomeScreenState extends State<HomeScreen>
         elevation: 5,
       ),
       backgroundColor: const Color(0x2f6009cb),
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 80, 20, 20),
         child: Column(
           children: [
             const Text(
               "Welcome to our new App "
-                  "BMI Calculator"
-                  ". You will love it! You need to calculate your BMI anytime? No problem, just start right away! Please insert your username below to continue and click the button.",
+              "BMI Calculator"
+              ". You will love it! You need to calculate your BMI anytime? No problem, just start right away! Please insert your username below to continue and click the button.",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -41,12 +46,13 @@ class _HomeScreenState extends State<HomeScreen>
             Expanded(
               child: Align(
                 child: Column(
-                  children: const [
-                    Text("Please insert your Username",
+                  children: [
+                    const Text("Please insert your Username",
                         style: TextStyle(color: Colors.white)),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     TextField(
-                      decoration: InputDecoration(
+                      controller: controller,
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(),
@@ -60,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen>
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                setState(() {});
+                [context.read<UserCubit>().sendUsername(controller.text),
+                Navigator.of(context).pushNamed(Routes.bmiScreen)];
+                //Navigator.push(context, MaterialPageRoute(builder: (context) => const BmiScreen(text: )))
               },
               style: ElevatedButton.styleFrom(
                 elevation: 0,

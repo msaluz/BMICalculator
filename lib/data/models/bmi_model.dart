@@ -1,6 +1,3 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-
 class BMI {
   final double height;
   final double weight;
@@ -12,25 +9,19 @@ class BMI {
     "Overweight",
     "Obese"
   ];
-  const BMI ({
-  required this.height,
-  required this.weight
+
+  const BMI({
+    required this.height,
+    required this.weight,
   });
 
   double compute() {
     return weight / (height * height) * 10000;
   }
 
-  computeBmiResult() {
+  computeBmiRating() {
     double bmi = compute();
-
-    String rating = bmiRating(bmi);
-
-    Map<String, String> data = {
-      "BMI": bmi.toStringAsFixed(1),
-      "Rating": rating
-    };
-    return data;
+    return bmiRating(bmi);
   }
 
   String bmiRating(double score) {
