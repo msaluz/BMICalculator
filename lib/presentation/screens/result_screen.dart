@@ -1,6 +1,8 @@
 import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/dataproviders/database/database_helper.dart';
+import '../../data/models/bmi_model.dart';
 import '../../logic/cubits/bmi_cubit.dart';
 import '../widgets/drawer_widget.dart';
 
@@ -13,6 +15,13 @@ class BmiResultScreen extends StatefulWidget {
 
 class _BmiResultScreenState extends State<BmiResultScreen>
     with SingleTickerProviderStateMixin {
+
+  String _username = "";
+  int _height = 0;
+  int _weight = 0;
+  double _score = 0;
+  String _rating = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +31,16 @@ class _BmiResultScreenState extends State<BmiResultScreen>
           title: const Text("BMI CALCULATOR"),
           backgroundColor: const Color(0xff140034),
           elevation: 5,
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  await DatabaseHelper.instance.add(
+                    BMI.db(username: _username, height: _height, weight: _weight, score: _score, rating: _rating, date: DateTime.now().toString()),
+                  );
+                },
+                icon: const Icon(Icons.save)
+            ),
+          ],
         ),
         backgroundColor: const Color(0x2f6009cb),
         body: Padding(
@@ -51,19 +70,27 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                   ),
                                 ),
                                 const SizedBox(height: 20),
-                                Text(
-                                  "User: ${context.select((UserCubit userCubit) => userCubit.state.username)}",
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                BlocBuilder<UserCubit, UserState>(
+                                  builder: (context, state) {
+                                    final userData =
+                                        state.username;
+                                    _username = userData;
+                                    return Text(
+                                      "User: $userData",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    );
+                                  },
                                 ),
                                 BlocBuilder<BmiCubit, BmiState>(
                                   builder: (context, state) {
                                     final heightData =
                                         (state as BmiResult).height;
+                                    _height = int.parse(heightData);
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -84,6 +111,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                   builder: (context, state) {
                                     final weightData =
                                         (state as BmiResult).weight;
+                                    _weight = int.parse(weightData);
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -126,6 +154,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                   builder: (context, state) {
                                     final scoreData =
                                         (state as BmiResult).bmiScore;
+                                    _score = double.parse(scoreData);
                                     if (state is BmiLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());
@@ -146,6 +175,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                                   builder: (context, state) {
                                     final ratingData =
                                         (state as BmiResult).bmiRating;
+                                    _rating = ratingData;
                                     return Text(
                                       "BMI Rating: $ratingData",
                                       textAlign: TextAlign.center,

@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/core/constants/rating_descriptions.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/drawer_widget.dart';
@@ -36,7 +37,7 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: const [
                   Text(
-                    "BMI under 18.5:\n Underweight\nYour Weight is too low eat some health food.",
+                    RatingDescriptions.underweight,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -45,7 +46,7 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
                     ),
                   ),
                   Text(
-                    "BMI between 18.5 and 24.9:\n Healthy Weight\nYou have a healthy body weight, good job.",
+                    RatingDescriptions.healthyWeight,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -54,7 +55,7 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
                     ),
                   ),
                   Text(
-                    "BMI between 25.0 and 29.9:\n Overweight\nYour body id overweight keep doing workout.",
+                    RatingDescriptions.overweight,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -63,7 +64,7 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
                     ),
                   ),
                   Text(
-                    "BMI over 30:\n Obesity\nYour weight is too heavy go to GYM.",
+                    RatingDescriptions.obese,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

@@ -1,19 +1,18 @@
 class BMI {
+  late final int? id;
+  late final String username;
   final int height;
   final int weight;
-  static double? low;
-  static double? high;
-  static final List<String> descriptions = [
-    "Underweight",
-    "Healthy Weight",
-    "Overweight",
-    "Obese"
-  ];
+  late final double score;
+  late final String rating;
+  late final String date;
 
-  const BMI({
+  BMI({
     required this.height,
     required this.weight,
   });
+
+  BMI.db({this.id, required this.username, required this.height, required this.weight, required this.score, required this.rating, required this.date});
 
   double compute() {
     return weight / (height * height) * 10000;
@@ -36,8 +35,25 @@ class BMI {
     }
   }
 
-  void rating(double low, double high) {
-    BMI.low = low;
-    BMI.high = high;
+  factory BMI.fromMap(Map<String, dynamic> json) => BMI.db(
+    id: json['id'],
+    username: json['username'],
+    height: json['height'],
+    weight: json['weight'],
+    score: json['score'],
+    rating: json['rating'],
+    date: json['date'],
+  );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'username': username,
+      'height': height,
+      'weight': weight,
+      'score': score,
+      'rating': rating,
+      'date': date,
+    };
   }
 }

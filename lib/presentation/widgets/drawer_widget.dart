@@ -1,4 +1,9 @@
+import 'package:bmi_calculator/presentation/router/routes.dart';
+import 'package:bmi_calculator/presentation/screens/history_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/home_screen.dart';
+import '../screens/overview_screen.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final _padding = const EdgeInsets.symmetric(horizontal: 20);
@@ -15,18 +20,21 @@ class NavigationDrawer extends StatelessWidget {
           children: <Widget>[
             const SizedBox(height: 50),
             buildMenuItem(
-              text: "User",
-              icon: Icons.people,
-            ),
-            const SizedBox(height: 20),
-            buildMenuItem(
               text: "Home",
               icon: Icons.cottage,
+              onClicked: () => selectedItem(context,0),
             ),
             const SizedBox(height: 20),
             buildMenuItem(
-              text: "Overview",
-              icon: Icons.data_thresholding_outlined,
+              text: "Rating Overview",
+              icon: Icons.article,
+              onClicked: () => selectedItem(context,1),
+            ),
+            const SizedBox(height: 20),
+            buildMenuItem(
+              text: "History",
+              icon: Icons.archive,
+              onClicked: () => selectedItem(context,2),
             ),
           ],
         ),
@@ -37,13 +45,31 @@ class NavigationDrawer extends StatelessWidget {
   Widget buildMenuItem({
     required String text,
     required IconData icon,
+    VoidCallback? onClicked,
   }) {
     const color = Colors.white;
 
     return ListTile(
-        leading: Icon(icon,color: color),
-        title: Text(text, style: const TextStyle(color: color)),
-        onTap: () {}
+      leading: Icon(icon,color: color),
+      title: Text(text, style: const TextStyle(color: color)),
+      onTap: onClicked,
     );
+
+
+  }
+
+  void selectedItem(BuildContext context, int index) {
+    Navigator.of(context).pop();
+    switch (index) {
+      case 0:
+        Navigator.of(context).pushNamed(Routes.homeScreen);
+        break;
+      case 1:
+        Navigator.of(context).pushNamed(Routes.overviewScreen);
+        break;
+      case 2:
+        Navigator.of(context).pushNamed(Routes.historyScreen);
+        break;
+    }
   }
 }

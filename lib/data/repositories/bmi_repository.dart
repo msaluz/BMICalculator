@@ -10,9 +10,4 @@ class BmiRepository {
     BMI bmi = BMI(height: height, weight: weight);
     return bmi.computeBmiRating();
   }
-
-  Future<List<String>> getBmiDescription() async {
-    return BMI.descriptions;
-  }
-
 }
