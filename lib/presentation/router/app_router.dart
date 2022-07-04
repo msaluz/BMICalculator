@@ -9,7 +9,6 @@ import '../screens/overview_screen.dart';
 import '../screens/result_screen.dart';
 
 class AppRouter {
-
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeScreen:

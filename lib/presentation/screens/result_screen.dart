@@ -1,10 +1,17 @@
 import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
+import 'package:bmi_calculator/presentation/router/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import '../../core/constants/color_styles.dart';
 import '../../data/dataproviders/database/database_helper.dart';
 import '../../data/models/bmi_model.dart';
 import '../../logic/cubits/bmi_cubit.dart';
 import '../widgets/drawer_widget.dart';
+import '../../core/constants/strings.dart';
+import 'history_screen.dart';
+
 
 class BmiResultScreen extends StatefulWidget {
   const BmiResultScreen({Key? key}) : super(key: key);
@@ -24,25 +31,30 @@ class _BmiResultScreenState extends State<BmiResultScreen>
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('dd-MM-yyyy kk:mm').format(now);
     return Scaffold(
         drawer: const NavigationDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("BMI CALCULATOR"),
-          backgroundColor: const Color(0xff140034),
+          title: const Text(Strings.title),
+          backgroundColor: ColorStyles.darkPurple,
           elevation: 5,
           actions: [
             IconButton(
                 onPressed: () async {
                   await DatabaseHelper.instance.add(
-                    BMI.db(username: _username, height: _height, weight: _weight, score: _score, rating: _rating, date: DateTime.now().toString()),
+                    BMI.db(username: _username, height: _height, weight: _weight, score: _score, rating: _rating, date: formattedDate.toString()),
                   );
+                  SchedulerBinding.instance.addPostFrameCallback((_) async {
+                    Navigator.of(context).pushReplacementNamed(Routes.historyScreen);
+                  });
                 },
                 icon: const Icon(Icons.save)
             ),
           ],
         ),
-        backgroundColor: const Color(0x2f6009cb),
+        backgroundColor: ColorStyles.lightPurple,
         body: Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
             child: Column(
@@ -55,13 +67,13 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color(0x2f6009cb),
+                            color: ColorStyles.lightPurple,
                           ),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
-                                  "Your given Data:",
+                                  Strings.givenData,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.white,
@@ -135,13 +147,13 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color(0x2f6009cb),
+                            color: ColorStyles.lightPurple,
                           ),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
-                                  "Result:",
+                                  Strings.result,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.white,

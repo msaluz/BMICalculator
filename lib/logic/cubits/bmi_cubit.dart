@@ -5,7 +5,7 @@ part 'bmi_state.dart';
 
 class BmiCubit extends Cubit<BmiState> {
   BmiCubit() : super(BmiLoading());
-  final BmiRepository repo = BmiRepository();
+  final BmiRepository repo = BmiRepository.instance;
 
   Future<void> bmiResult(int height, int weight) async {
     final score = await repo.getBmiScore(weight, height);

@@ -3,6 +3,9 @@ import 'package:bmi_calculator/presentation/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/constants/color_styles.dart';
+import '../../core/constants/strings.dart';
+
 class BmiScreen extends StatefulWidget {
   const BmiScreen({Key? key}) : super(key: key);
 
@@ -35,8 +38,8 @@ class _BmiScreenState extends State<BmiScreen>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("BMI CALCULATOR"),
-        backgroundColor: const Color(0xff140034),
+        title: const Text(Strings.title),
+        backgroundColor: ColorStyles.darkPurple,
         elevation: 5,
         actions: [
           IconButton(
@@ -50,7 +53,7 @@ class _BmiScreenState extends State<BmiScreen>
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
         child: Column(
           children: [
             Expanded(
@@ -94,15 +97,15 @@ class _BmiScreenState extends State<BmiScreen>
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: const Color(0x2f6009cb),
+                      color: ColorStyles.lightPurple,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "HEIGHT",
+                          Strings.height,
                           style: TextStyle(
-                              color: Color(0xffB2B9D5),
+                              color: ColorStyles.whitePurple,
                               fontSize: 18,
                               fontWeight: FontWeight.w500),
                         ),
@@ -116,7 +119,7 @@ class _BmiScreenState extends State<BmiScreen>
                                       fontSize: 60,
                                       fontWeight: FontWeight.w500)),
                               const TextSpan(
-                                  text: 'CM',
+                                  text: Strings.heightUnit,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
@@ -125,9 +128,9 @@ class _BmiScreenState extends State<BmiScreen>
                           ),
                         ),
                         Slider(
-                            inactiveColor: const Color(0xffB2B9D5),
-                            activeColor: const Color(0xff00951a),
-                            thumbColor: const Color(0xff26ff00),
+                            inactiveColor: ColorStyles.whitePurple,
+                            activeColor: ColorStyles.darkGreen,
+                            thumbColor: ColorStyles.lightGreen,
                             min: 50,
                             max: 250,
                             value: height,
@@ -157,18 +160,18 @@ class _BmiScreenState extends State<BmiScreen>
                           );
                         },
                         child: Container(
-                          padding: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color(0x2f6009cb),
+                            color: ColorStyles.lightPurple,
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                "WEIGHT",
+                                Strings.weight,
                                 style: TextStyle(
-                                    color: Color(0xffB2B9D5),
+                                    color: ColorStyles.whitePurple,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -181,16 +184,16 @@ class _BmiScreenState extends State<BmiScreen>
                                         fontSize: 60,
                                         fontWeight: FontWeight.w500)),
                                 const TextSpan(
-                                    text: 'KG',
+                                    text: Strings.weightUnit,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w400)),
                               ])),
                               Slider(
-                                  inactiveColor: const Color(0xffB2B9D5),
-                                  activeColor: const Color(0xff00951a),
-                                  thumbColor: const Color(0xff26ff00),
+                                  inactiveColor: ColorStyles.whitePurple,
+                                  activeColor: ColorStyles.darkGreen,
+                                  thumbColor: ColorStyles.lightGreen,
                                   min: 0,
                                   max: 300,
                                   value: weight,
@@ -231,15 +234,15 @@ class _BmiScreenState extends State<BmiScreen>
                     elevation: 0,
                     fixedSize: Size(MediaQuery.of(context).size.width,
                         MediaQuery.of(context).size.height),
-                    primary: const Color(0xff26ff00),
+                    primary: ColorStyles.lightGreen,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                   child: const Text(
-                    "Check Your BMI",
+                    Strings.btnCheck,
                     style: TextStyle(
-                        color: Color(0xff140034),
+                        color: ColorStyles.darkPurple,
                         fontSize: 22,
                         fontWeight: FontWeight.w500),
                   ),
@@ -249,7 +252,7 @@ class _BmiScreenState extends State<BmiScreen>
           ],
         ),
       ),
-      backgroundColor: const Color(0xff140034),
+      backgroundColor: ColorStyles.darkPurple,
     );
   }
 }

@@ -1,9 +1,7 @@
 import 'package:bmi_calculator/presentation/router/routes.dart';
-import 'package:bmi_calculator/presentation/screens/history_screen.dart';
 import 'package:flutter/material.dart';
+import '../../core/constants/strings.dart';
 
-import '../screens/home_screen.dart';
-import '../screens/overview_screen.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final _padding = const EdgeInsets.symmetric(horizontal: 20);
@@ -20,19 +18,19 @@ class NavigationDrawer extends StatelessWidget {
           children: <Widget>[
             const SizedBox(height: 50),
             buildMenuItem(
-              text: "Home",
+              text: Strings.home,
               icon: Icons.cottage,
               onClicked: () => selectedItem(context,0),
             ),
             const SizedBox(height: 20),
             buildMenuItem(
-              text: "Rating Overview",
+              text: Strings.ratingOverview,
               icon: Icons.article,
               onClicked: () => selectedItem(context,1),
             ),
             const SizedBox(height: 20),
             buildMenuItem(
-              text: "History",
+              text: Strings.history,
               icon: Icons.archive,
               onClicked: () => selectedItem(context,2),
             ),

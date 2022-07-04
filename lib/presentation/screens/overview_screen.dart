@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/core/constants/rating_descriptions.dart';
 import 'package:flutter/material.dart';
-
+import '../../core/constants/strings.dart';
+import '../../core/constants/color_styles.dart';
 import '../widgets/drawer_widget.dart';
 
 
@@ -19,18 +20,18 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
         drawer: const NavigationDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("BMI CALCULATOR"),
-          backgroundColor: const Color(0xff140034),
+          title: const Text(Strings.title),
+          backgroundColor: ColorStyles.darkPurple,
           elevation: 5,
         ),
-        backgroundColor: const Color(0x2f6009cb),
+        backgroundColor: ColorStyles.lightPurple,
         body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           child: Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: const Color(0x2f6009cb),
+              color: ColorStyles.lightPurple,
             ),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

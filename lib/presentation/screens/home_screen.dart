@@ -1,7 +1,8 @@
 import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import '../../core/constants/color_styles.dart';
+import '../../core/constants/strings.dart';
 import '../router/routes.dart';
 import '../widgets/drawer_widget.dart';
 
@@ -23,19 +24,16 @@ class _HomeScreenState extends State<HomeScreen>
       drawer: const NavigationDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("BMI CALCULATOR"),
-        backgroundColor: const Color(0xff140034),
+        title: const Text(Strings.title),
+        backgroundColor: ColorStyles.darkPurple,
         elevation: 5,
       ),
-      backgroundColor: const Color(0x2f6009cb),
+      backgroundColor: ColorStyles.lightPurple,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 75, 20, 20),
+        padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
         child: Column(
           children: [
-            const Text(
-              "Welcome to our new App "
-              "BMI Calculator"
-              ". You will love it! You need to calculate your BMI anytime? No problem, just start right away! Please insert your username below to continue and click the button.",
+            const Text(Strings.welcomeText,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -48,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen>
               child: Align(
                 child: Column(
                   children: [
-                    const Text("Please insert your Username",
+                    const Text(Strings.pleaseInsertUsername,
                         style: TextStyle(color: Colors.white)),
                     const SizedBox(height: 10),
                     TextField(
@@ -57,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen>
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(),
-                        hintText: 'Insert Username',
+                        hintText: Strings.insertUsername,
                       ),
                     ),
                   ],
@@ -70,25 +68,25 @@ class _HomeScreenState extends State<HomeScreen>
                 if (controller.text != "") {
                   [
                     context.read<UserCubit>().sendUsername(controller.text),
-                    Navigator.of(context).pushNamed(Routes.bmiScreen)
+                    Navigator.of(context).pushNamed(Routes.bmiScreen),
+                    controller.clear(),
                   ];
                 } else {
-                  //TODO: Show error message
+                  _showEmptyUserDialog();
                 }
                 //Navigator.push(context, MaterialPageRoute(builder: (context) => const BmiScreen(text: )))
               },
               style: ElevatedButton.styleFrom(
                 elevation: 0,
                 fixedSize: const Size(150, 50),
-                primary: const Color(0xff26ff00),
+                primary: ColorStyles.lightGreen,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Text(
-                "Continue",
+              child: const Text(Strings.btnCalculate,
                 style: TextStyle(
-                    color: Color(0xff140034),
+                    color: ColorStyles.darkPurple,
                     fontSize: 22,
                     fontWeight: FontWeight.w500),
               ),
@@ -96,6 +94,33 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _showEmptyUserDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(Strings.alertHey),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text(Strings.alertDescription),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(Strings.alertApprove),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

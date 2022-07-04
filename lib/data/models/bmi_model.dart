@@ -12,7 +12,14 @@ class BMI {
     required this.weight,
   });
 
-  BMI.db({this.id, required this.username, required this.height, required this.weight, required this.score, required this.rating, required this.date});
+  BMI.db(
+      {this.id,
+      required this.username,
+      required this.height,
+      required this.weight,
+      required this.score,
+      required this.rating,
+      required this.date});
 
   double compute() {
     return weight / (height * height) * 10000;
@@ -36,14 +43,14 @@ class BMI {
   }
 
   factory BMI.fromMap(Map<String, dynamic> json) => BMI.db(
-    id: json['id'],
-    username: json['username'],
-    height: json['height'],
-    weight: json['weight'],
-    score: json['score'],
-    rating: json['rating'],
-    date: json['date'],
-  );
+        id: json['id'],
+        username: json['username'],
+        height: json['height'],
+        weight: json['weight'],
+        score: json['score'],
+        rating: json['rating'],
+        date: json['date'],
+      );
 
   Map<String, dynamic> toMap() {
     return {
