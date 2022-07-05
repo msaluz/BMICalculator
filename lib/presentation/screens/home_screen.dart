@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen>
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Text(Strings.btnCalculate,
+              child: const Text(Strings.btnContinue,
                 style: TextStyle(
                     color: ColorStyles.darkPurple,
                     fontSize: 22,

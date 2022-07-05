@@ -10,7 +10,7 @@ class Strings {
   static const String welcomeText = "Welcome to our new App called BMI Calculator. You will love it! You need to calculate your BMI anytime? No problem, just start right away! Please insert your username below to continue and click the button.";
   static const String pleaseInsertUsername = "Please insert your Username.";
   static const String insertUsername = "Insert Username";
-  static const String btnCalculate = "Calculate";
+  static const String btnContinue = "Continue";
   static const String givenData = "Your given Data:";
   static const String result = "Result:";
   static const String home = "Home";
@@ -18,6 +18,6 @@ class Strings {
   static const String history = "History";
   static const String alertHey = "Hey!";
   static const String alertDescription = "You forgot to type in your Username, brainafk?";
-  static const String alertApprove = "Approve";
+  static const String alertApprove = "Okay";
 
 }
