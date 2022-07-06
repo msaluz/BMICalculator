@@ -2,9 +2,9 @@ import 'package:bmi_calculator/logic/cubits/bmi_cubit.dart';
 import 'package:bmi_calculator/presentation/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../core/constants/color_styles.dart';
-import '../../core/constants/strings.dart';
 
 class BmiScreen extends StatefulWidget {
   const BmiScreen({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _BmiScreenState extends State<BmiScreen>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(Strings.title),
+        title: Text(AppLocalizations.of(context)!.title),
         backgroundColor: ColorStyles.darkPurple,
         elevation: 5,
         actions: [
@@ -102,9 +102,9 @@ class _BmiScreenState extends State<BmiScreen>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          Strings.height,
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.of(context)!.height,
+                          style: const TextStyle(
                               color: ColorStyles.whitePurple,
                               fontSize: 18,
                               fontWeight: FontWeight.w500),
@@ -118,9 +118,9 @@ class _BmiScreenState extends State<BmiScreen>
                                       color: Colors.white,
                                       fontSize: 60,
                                       fontWeight: FontWeight.w500)),
-                              const TextSpan(
-                                  text: Strings.heightUnit,
-                                  style: TextStyle(
+                              TextSpan(
+                                  text: AppLocalizations.of(context)!.heightUnit,
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400)),
@@ -168,9 +168,9 @@ class _BmiScreenState extends State<BmiScreen>
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                Strings.weight,
-                                style: TextStyle(
+                              Text(
+                                AppLocalizations.of(context)!.weight,
+                                style: const TextStyle(
                                     color: ColorStyles.whitePurple,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500),
@@ -183,9 +183,9 @@ class _BmiScreenState extends State<BmiScreen>
                                         color: Colors.white,
                                         fontSize: 60,
                                         fontWeight: FontWeight.w500)),
-                                const TextSpan(
-                                    text: Strings.weightUnit,
-                                    style: TextStyle(
+                                TextSpan(
+                                    text: AppLocalizations.of(context)!.weightUnit,
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w400)),
@@ -239,9 +239,9 @@ class _BmiScreenState extends State<BmiScreen>
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  child: const Text(
-                    Strings.btnCheck,
-                    style: TextStyle(
+                  child: Text(
+                    AppLocalizations.of(context)!.btnCheck,
+                    style: const TextStyle(
                         color: ColorStyles.darkPurple,
                         fontSize: 22,
                         fontWeight: FontWeight.w500),

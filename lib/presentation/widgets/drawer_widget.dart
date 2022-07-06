@@ -1,6 +1,6 @@
 import 'package:bmi_calculator/presentation/router/routes.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class NavigationDrawer extends StatelessWidget {
@@ -18,19 +18,19 @@ class NavigationDrawer extends StatelessWidget {
           children: <Widget>[
             const SizedBox(height: 50),
             buildMenuItem(
-              text: Strings.home,
+              text: AppLocalizations.of(context)!.home,
               icon: Icons.cottage,
               onClicked: () => selectedItem(context,0),
             ),
             const SizedBox(height: 20),
             buildMenuItem(
-              text: Strings.ratingOverview,
+              text: AppLocalizations.of(context)!.ratingOverview,
               icon: Icons.article,
               onClicked: () => selectedItem(context,1),
             ),
             const SizedBox(height: 20),
             buildMenuItem(
-              text: Strings.history,
+              text: AppLocalizations.of(context)!.history,
               icon: Icons.archive,
               onClicked: () => selectedItem(context,2),
             ),

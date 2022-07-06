@@ -2,8 +2,7 @@ import 'package:bmi_calculator/core/constants/color_styles.dart';
 import 'package:bmi_calculator/data/dataproviders/database/database_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../core/constants/strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../data/models/bmi_model.dart';
 import '../widgets/drawer_widget.dart';
 
@@ -22,7 +21,7 @@ class _BmiHistoryState extends State<BmiHistory>
       drawer: const NavigationDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(Strings.title),
+        title: Text(AppLocalizations.of(context)!.title),
         backgroundColor: ColorStyles.darkPurple,
         elevation: 5,
       ),
@@ -32,13 +31,13 @@ class _BmiHistoryState extends State<BmiHistory>
             future: DatabaseHelper.instance.getBmiResults(),
             builder: (BuildContext context, AsyncSnapshot<List<BMI>> snapshot) {
               if (!snapshot.hasData) {
-                return const Center(
-                    child: Text(Strings.loading,
+                return Center(
+                    child: Text(AppLocalizations.of(context)!.loading,
                         style: TextStyle(color: Colors.white)));
               }
               return snapshot.data!.isEmpty
-                  ? const Center(
-                      child: Text(Strings.noBmiInList,
+                  ? Center(
+                      child: Text(AppLocalizations.of(context)!.noBmiInList,
                           style: TextStyle(color: Colors.white)))
                   : Align(
                       alignment: Alignment.topCenter,

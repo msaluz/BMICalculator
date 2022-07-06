@@ -1,10 +1,12 @@
 import 'package:bmi_calculator/logic/cubits/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/constants/color_styles.dart';
-import '../../core/constants/strings.dart';
 import '../router/routes.dart';
 import '../widgets/drawer_widget.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,18 +26,18 @@ class _HomeScreenState extends State<HomeScreen>
       drawer: const NavigationDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(Strings.title),
+        title: Text(AppLocalizations.of(context)!.title),
         backgroundColor: ColorStyles.darkPurple,
         elevation: 5,
       ),
       backgroundColor: ColorStyles.lightPurple,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
+        padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
         child: Column(
           children: [
-            const Text(Strings.welcomeText,
+            Text(AppLocalizations.of(context)!.welcomeText,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
@@ -46,16 +48,16 @@ class _HomeScreenState extends State<HomeScreen>
               child: Align(
                 child: Column(
                   children: [
-                    const Text(Strings.pleaseInsertUsername,
-                        style: TextStyle(color: Colors.white)),
+                    Text(AppLocalizations.of(context)!.pleaseInsertUsername,
+                        style: const TextStyle(color: Colors.white)),
                     const SizedBox(height: 10),
                     TextField(
                       controller: controller,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        border: OutlineInputBorder(),
-                        hintText: Strings.insertUsername,
+                        border: const OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context)!.insertUsername,
                       ),
                     ),
                   ],
@@ -84,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen>
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Text(Strings.btnContinue,
-                style: TextStyle(
+              child:  Text(AppLocalizations.of(context)!.btnContinue,
+                style: const TextStyle(
                     color: ColorStyles.darkPurple,
                     fontSize: 22,
                     fontWeight: FontWeight.w500),
@@ -103,17 +105,17 @@ class _HomeScreenState extends State<HomeScreen>
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(Strings.alertHey),
+          title: Text(AppLocalizations.of(context)!.alertHey),
           content: SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[
-                Text(Strings.alertDescription),
+              children: <Widget>[
+                Text(AppLocalizations.of(context)!.alertDescription),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(Strings.alertApprove),
+              child: Text(AppLocalizations.of(context)!.alertApprove),
               onPressed: () {
                 Navigator.of(context).pop();
               },

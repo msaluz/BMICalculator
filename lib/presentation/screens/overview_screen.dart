@@ -1,6 +1,5 @@
-import 'package:bmi_calculator/core/constants/rating_descriptions.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/constants/color_styles.dart';
 import '../widgets/drawer_widget.dart';
 
@@ -20,7 +19,7 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
         drawer: const NavigationDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(Strings.title),
+          title: Text(AppLocalizations.of(context)!.title),
           backgroundColor: ColorStyles.darkPurple,
           elevation: 5,
         ),
@@ -36,38 +35,38 @@ class _BmiOverviewScreenState extends State<BmiOverviewScreen>
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: const [
+                children: [
                   Text(
-                    RatingDescriptions.underweight,
+                    AppLocalizations.of(context)!.underweight,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    RatingDescriptions.healthyWeight,
+                    AppLocalizations.of(context)!.healthyWeight,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    RatingDescriptions.overweight,
+                    AppLocalizations.of(context)!.overweight,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    RatingDescriptions.obese,
+                    AppLocalizations.of(context)!.obese,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,

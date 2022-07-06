@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/core/constants/strings.dart';
+
 class BMI {
   late final int? id;
   late final String username;
@@ -32,13 +34,13 @@ class BMI {
 
   String bmiRating(double score) {
     if (score < 18.5) {
-      return "Underweight";
+      return Strings.underweightText;
     } else if (score >= 18.5 && score <= 24.9) {
-      return "Healthy Weight";
+      return Strings.healthyWeightText;
     } else if (score >= 25 && score <= 29.9) {
-      return "Overweight";
+      return Strings.overweightText;
     } else {
-      return "Obese";
+      return Strings.obeseText;
     }
   }
 

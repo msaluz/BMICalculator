@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/constants/color_styles.dart';
 import '../../data/dataproviders/database/database_helper.dart';
 import '../../data/models/bmi_model.dart';
 import '../../logic/cubits/bmi_cubit.dart';
 import '../widgets/drawer_widget.dart';
-import '../../core/constants/strings.dart';
-import 'history_screen.dart';
 
 
 class BmiResultScreen extends StatefulWidget {
@@ -37,7 +36,7 @@ class _BmiResultScreenState extends State<BmiResultScreen>
         drawer: const NavigationDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(Strings.title),
+          title: Text(AppLocalizations.of(context)!.title),
           backgroundColor: ColorStyles.darkPurple,
           elevation: 5,
           actions: [
@@ -72,10 +71,10 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  Strings.givenData,
+                                Text(
+                                  AppLocalizations.of(context)!.givenData,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -152,10 +151,10 @@ class _BmiResultScreenState extends State<BmiResultScreen>
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  Strings.result,
+                                Text(
+                                  AppLocalizations.of(context)!.title,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
